@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Grow a Garden Pet Selector</title>
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Comic+Neue:wght@400;700&display=swap');
+    
+    body {
+      font-family: 'Comic Neue', 'Segoe UI', Arial, sans-serif;
+      background: linear-gradient(135deg, #ff6b9d 0%, #c44569 25%, #feca57 50%, #48dbfb 75%, #ff9ff3 100%);
+      background-size: 400% 400%;
+      animation: rainbowBg 8s ease-in-out infinite;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    @keyframes rainbowBg {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    h1 {
+      background: linear-gradient(90deg, #ff6b9d 0%, #feca57 25%, #48dbfb 50%, #ff9ff3 75%, #ff6b9d 100%);
+      background-size: 200% 200%;
+      animation: rainbowText 3s ease-in-out infinite;
+      padding: 30px 0;
+      text-align: center;
+      margin: 0;
+      color: #fff;
+      text-shadow: 3px 3px 0px #ff4757, 6px 6px 0px #2f3542;
+      font-size: 3rem;
+      font-family: 'Fredoka One', cursive;
+      border-bottom: 6px solid #ff6b9d;
+      letter-spacing: 3px;
+      border-radius: 0 0 40px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    h1::before {
+      content: '🌟';
+      position: absolute;
+      left: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      animation: sparkle 2s ease-in-out infinite;
+    }
+
+    h1::after {
+      content: '🌟';
+      position: absolute;
+      right: 20px;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 2rem;
+      animation: sparkle 2s ease-in-out infinite 1s;
+    }
+
+    @keyframes rainbowText {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes sparkle {
+      0%, 100% { transform: translateY(-50%) scale(1) rotate(0deg); }
+      50% { transform: translateY(-50%) scale(1.2) rotate(180deg); }
+    }
+
+    .search-container {
+      text-align: center;
+      margin: 40px 0 30px 0;
+      position: relative;
+    }
+
+    #searchInput {
+      padding: 18px 25px;
+      width: 320px;
+      border-radius: 30px;
+      border: 4px solid #ff6b9d;
+      font-size: 1.2rem;
+      box-shadow: 0 8px 25px rgba(255,107,157,0.3), 0 0 0 0 rgba(255,107,157,0.7);
+      outline: none;
+      transition: all 0.3s;
+      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+      font-family: 'Comic Neue', sans-serif;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { box-shadow: 0 8px 25px rgba(255,107,157,0.3), 0 0 0 0 rgba(255,107,157,0.7); }
+      70% { box-shadow: 0 8px 25px rgba(255,107,157,0.3), 0 0 0 10px rgba(255,107,157,0); }
+      100% { box-shadow: 0 8px 25px rgba(255,107,157,0.3), 0 0 0 0 rgba(255,107,157,0); }
+    }
+
+    #searchInput:focus {
+      border-color: #48dbfb;
+      transform: scale(1.05);
+      box-shadow: 0 12px 35px rgba(72,219,251,0.4);
+    }
+
+    .tier-section {
+      padding: 0 50px;
+      display: flex;
+      flex-direction: column;
+      gap: 50px;
+      align-items: center;
+    }
+
+    .tier-title {
+      font-size: 2rem;
+      margin-top: 0;
+      color: #fff;
+      background: linear-gradient(90deg, #ff6b9d 0%, #feca57 25%, #48dbfb 50%, #ff9ff3 75%, #ff6b9d 100%);
+      background-size: 200% 200%;
+      animation: rainbowText 4s ease-in-out infinite;
+      padding: 15px 35px;
+      display: inline-block;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(255,107,157,0.3);
+      font-weight: bold;
+      letter-spacing: 2px;
+      border: 4px solid #fff;
+      font-family: 'Fredoka One', cursive;
+      text-shadow: 2px 2px 0px #ff4757;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .tier-title::before {
+      content: '✨';
+      position: absolute;
+      left: 10px;
+      top: 50%;
+      transform: translateY(-50%);
+      animation: bounce 1s ease-in-out infinite;
+    }
+
+    @keyframes bounce {
+      0%, 100% { transform: translateY(-50%) scale(1); }
+      50% { transform: translateY(-50%) scale(1.3); }
+    }
+
+    .pet-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 35px;
+      justify-content: center;
+      margin-top: 25px;
+    }
+
+    .pet-card {
+      width: 180px;
+      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+      padding: 20px 15px 18px 15px;
+      border: 4px solid #ff6b9d;
+      border-radius: 25px;
+      box-shadow: 0 10px 30px rgba(255,107,157,0.2), 0 0 0 0 rgba(255,107,157,0.7);
+      text-align: center;
+      cursor: pointer;
+      transition: all 0.3s;
+      position: relative;
+      overflow: hidden;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    .pet-card:nth-child(odd) {
+      animation-delay: 0.5s;
+    }
+
+    .pet-card:nth-child(even) {
+      animation-delay: 1s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .pet-card::before {
+      content: '';
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: linear-gradient(45deg, transparent, rgba(255,255,255,0.3), transparent);
+      transform: rotate(45deg);
+      transition: all 0.6s;
+      opacity: 0;
+    }
+
+    .pet-card:hover::before {
+      opacity: 1;
+      transform: rotate(45deg) translateX(100%);
+    }
+
+    .pet-card:hover {
+      transform: scale(1.1) rotate(2deg);
+      box-shadow: 0 15px 40px rgba(255,107,157,0.4), 0 0 0 0 rgba(255,107,157,0.7);
+      border-color: #48dbfb;
+    }
+
+    .pet-card.selected {
+      border-color: #feca57;
+      background: linear-gradient(135deg, #fff3e0 0%, #ffe0b2 100%);
+      box-shadow: 0 15px 45px rgba(254,202,87,0.4);
+      animation: selectedPulse 1s ease-in-out infinite;
+    }
+
+    @keyframes selectedPulse {
+      0%, 100% { transform: scale(1.05); }
+      50% { transform: scale(1.1); }
+    }
+
+    .pet-image {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      background: linear-gradient(135deg, #ff6b9d 0%, #48dbfb 100%);
+      border-radius: 20px;
+      box-shadow: 0 8px 25px rgba(255,107,157,0.3);
+      margin-bottom: 12px;
+      border: 4px solid #48dbfb;
+      transition: all 0.3s;
+      animation: imageGlow 2s ease-in-out infinite;
+    }
+
+    @keyframes imageGlow {
+      0%, 100% { box-shadow: 0 8px 25px rgba(255,107,157,0.3); }
+      50% { box-shadow: 0 8px 25px rgba(255,107,157,0.6), 0 0 20px rgba(255,107,157,0.4); }
+    }
+
+    .pet-card:hover .pet-image {
+      transform: scale(1.1) rotate(5deg);
+      border-color: #ff9ff3;
+    }
+
+    .overlay {
+      display: none;
+    }
+    .overlay.active {
+      display: flex;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: linear-gradient(135deg, rgba(255,107,157,0.3) 0%, rgba(72,219,251,0.3) 50%, rgba(255,159,243,0.3) 100%);
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+      animation: modalFadeIn 0.4s;
+    }
+    @keyframes modalFadeIn {
+      from { opacity: 0; transform: scale(0.8); }
+      to { opacity: 1; transform: scale(1); }
+    }
+    .modal {
+      background: linear-gradient(135deg, #fff 0%, #f8f9fa 100%);
+      padding: 40px 30px;
+      border-radius: 30px;
+      max-height: 90vh;
+      width: 480px;
+      overflow-y: auto;
+      text-align: center;
+      box-shadow: 0 20px 60px rgba(255,107,157,0.3);
+      border: 5px solid #ff6b9d;
+      position: relative;
+      animation: modalBounce 0.6s ease-out;
+    }
+
+    @keyframes modalBounce {
+      0% { transform: scale(0.3); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    .modal h2 {
+      color: #ff6b9d;
+      font-family: 'Fredoka One', cursive;
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      text-shadow: 2px 2px 0px #ff4757;
+    }
+
+    .submit-btn {
+      background: linear-gradient(90deg, #ff6b9d 0%, #48dbfb 50%, #ff9ff3 100%);
+      background-size: 200% 200%;
+      animation: rainbowText 3s ease-in-out infinite;
+      border: none;
+      padding: 18px 35px;
+      margin-top: 20px;
+      color: white;
+      cursor: pointer;
+      font-size: 1.3rem;
+      border-radius: 30px;
+      font-weight: bold;
+      box-shadow: 0 8px 25px rgba(255,107,157,0.3);
+      transition: all 0.3s;
+      font-family: 'Fredoka One', cursive;
+      text-shadow: 2px 2px 0px #ff4757;
+    }
+    .submit-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 35px rgba(255,107,157,0.5);
+    }
+    .cancel-btn {
+      background: linear-gradient(90deg, #feca57 0%, #ff9ff3 100%);
+      border: none;
+      padding: 15px 30px;
+      margin-top: 18px;
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.1rem;
+      border-radius: 25px;
+      font-weight: bold;
+      box-shadow: 0 8px 25px rgba(254,202,87,0.3);
+      transition: all 0.3s;
+      font-family: 'Comic Neue', sans-serif;
+    }
+    .cancel-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 35px rgba(254,202,87,0.5);
+    }
+
+    .selection-banner {
+      background: linear-gradient(90deg, #ff6b9d 0%, #48dbfb 50%, #ff9ff3 100%);
+      background-size: 200% 200%;
+      animation: rainbowText 4s ease-in-out infinite;
+      padding: 20px 0;
+      text-align: center;
+      font-weight: bold;
+      color: #fff;
+      margin: 35px auto 25px auto;
+      font-size: 1.4rem;
+      border-radius: 25px;
+      box-shadow: 0 8px 25px rgba(255,107,157,0.3);
+      letter-spacing: 2px;
+      font-family: 'Fredoka One', cursive;
+      text-shadow: 2px 2px 0px #ff4757;
+      border: 4px solid #fff;
+    }
+
+    .claim-now-btn {
+      margin-left: 18px;
+      background: linear-gradient(90deg, #48dbfb 0%, #ff9ff3 100%);
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      border-radius: 25px;
+      cursor: pointer;
+      font-weight: bold;
+      font-size: 1.1rem;
+      box-shadow: 0 8px 25px rgba(72,219,251,0.3);
+      transition: all 0.3s;
+      font-family: 'Comic Neue', sans-serif;
+    }
+    .claim-now-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 12px 35px rgba(72,219,251,0.5);
+    }
+
+    .selected-pet-list {
+      margin-top: 25px;
+      text-align: left;
+    }
+    .selected-pet {
+      display: flex;
+      align-items: center;
+      margin-bottom: 18px;
+      background: linear-gradient(90deg, #ff6b9d 0%, #48dbfb 100%);
+      border-radius: 15px;
+      padding: 12px 18px;
+      box-shadow: 0 8px 25px rgba(255,107,157,0.2);
+      border: 3px solid #fff;
+      animation: slideIn 0.5s ease-out;
+    }
+
+    @keyframes slideIn {
+      from { transform: translateX(-100%); opacity: 0; }
+      to { transform: translateX(0); opacity: 1; }
+    }
+
+    .selected-pet img {
+      width: 50px;
+      height: 50px;
+      margin-right: 18px;
+      border-radius: 12px;
+      border: 3px solid #fff;
+      background: #fff;
+      animation: imageBounce 1s ease-in-out infinite;
+    }
+
+    @keyframes imageBounce {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.1); }
+    }
+
+    .view-selected-btn {
+      background: linear-gradient(90deg, #ff9ff3 0%, #ff6b9d 100%);
+      color: white;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 20px;
+      cursor: pointer;
+      margin-top: 12px;
+      font-weight: bold;
+      font-size: 1rem;
+      box-shadow: 0 6px 20px rgba(255,159,243,0.3);
+      transition: all 0.3s;
+      font-family: 'Comic Neue', sans-serif;
+    }
+    .view-selected-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 8px 25px rgba(255,159,243,0.5);
+    }
+
+    /* Add fun emoji decorations */
+    .pet-card strong {
+      color: #ff6b9d;
+      font-size: 1.1rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 0px #ff4757;
+    }
+
+    /* Add confetti effect for selected pets */
+    .confetti {
+      position: fixed;
+      width: 10px;
+      height: 10px;
+      background: #ff6b9d;
+      animation: confettiFall 3s linear infinite;
+      z-index: 1000;
+    }
+
+    @keyframes confettiFall {
+      0% { transform: translateY(-100vh) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🌟 Grow a Garden Pet Tier List 🌟</h1>
+
+  <div class="search-container">
+    <input type="text" id="searchInput" placeholder="🔍 Search for your favorite pets..." onkeyup="filterPets()" />
+  </div>
+
+  <div id="selectionMessage" class="selection-banner">
+    🎉 You selected 0 pets — Claim now or add more packages! 🎉
+    <button class="claim-now-btn" onclick="showClaimModal()">🎁 Claim Now</button>
+  </div>
+
+  <div id="tierListContainer" class="tier-section"></div>
+
+  <!-- Claim Modal -->
+  <div class="overlay" id="overlay">
+    <div class="modal">
+      <h2>🎮 CONTINUE 🎮</h2>
+      <p>🎯 Here are your selected pets:</p>
+      <div class="selected-pet-list" id="selectedPetList"></div>
+      <a href="" target="_blank">
+        <button class="submit-btn">🚀 JOIN VIA PRIVATE SERVER 🚀</button>
+      </a>
+      <br>
+      <button class="cancel-btn" onclick="closeModal()">❌ Cancel</button>
+    </div>
+  </div>
+
+  <script>
+    const robloxLink = "https://roblox.tg/games/126884695634066/Grow-a-Garden?privateServerLinkCode=14816573020163484199754371728473";
+
+    const pets = {
+      S: [
+        { name: "Kitsune", ability: "Stealth teleport", images: ["kitsune-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/0/04/Kitsune.png/revision/latest?cb=20250728131555"] },
+        { name: "Raccoon", ability: "Steals items", image: ["Raccon_Better_Quality-removebg-preview (1).png", "https://static.wikia.nocookie.net/growagarden/images/5/54/Raccon_Better_Quality.png/revision/latest?cb=20250605153904"] },
+        { name: "Disco Bee", ability: "Stuns enemies", image: ["DiscoBeeIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/f/f2/DiscoBeeIcon.gif/revision/latest?cb=20250613134410"] },
+        { name: "T-Rex", ability: "High damage roar", image: ["T-Rex.webp", "https://static.wikia.nocookie.net/growagarden/images/f/f8/T-Rex.png/revision/latest?cb=20250705092909"] },
+        { name: "Corrupted Kitsune", ability: "Dark dash", image: ["how-to-get-corrupted-kitsune-grow-a-garden-removebg-preview.png" ,"https://static.wikia.nocookie.net/growagarden/images/2/2a/CorruptedKitsune.png/revision/latest?cb=20250726085150"] },
+        { name: "Raiju", ability: "Lightning speed", image: ["Raiju-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/0/0d/Raiju.png/revision/latest?cb=20250726083117"] },
+        { name: "French Fry Ferret", ability: "Fast dodge", image:["FrenchFryFerret-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/7/7e/FrenchFryFerret.png/revision/latest?cb=20250802055028"] },
+        { name: "Spinosaurus", ability: "Water attack", image: ["Spinosaurus-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/2/24/Spinosaurus.png/revision/latest?cb=20250712071322"] },
+        { name: "Dragonfly", ability: "Flying boost", image: ["DragonflyIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/c/c9/DragonflyIcon.png/revision/latest?cb=20250603072107"] },
+        { name: "Butterfly", ability: "Charm effect", image: ["Thy_Butterfly_V2-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/1/18/Thy_Butterfly_V2.png/revision/latest?cb=20250724152106"] },
+        { name: "Blood Hedgehog", ability: "Bleed attack", image: ["Queen_bee-removebg-preview.png" ,"https://static.wikia.nocookie.net/growagarden/images/9/95/Blood_Hedgehog_Icon.png/revision/latest?cb=20250517140316"] },
+        { name: "Moon Cat", ability: "Night vision", image: ["Moon_Cat-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/e/ee/Moon_Cat.png/revision/latest?cb=20250525110317"] },
+        { name: "Spaghetti Sloth", ability: "Sticky trap", image: ["SpaghettiSloth-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/8/8f/SpaghettiSloth.png/revision/latest?cb=20250802060752"] },
+        { name: "Kappa", ability: "Water burst", image: ["Kappa_-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/8/84/Kappa_.png/revision/latest?cb=20250719022611"] },
+      ],
+      A: [
+        { name: "Sushi Bear", ability: "Health regen", image: ["Grow_a_Garden_Sushi_Bear_Pet-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/5/5a/SushiBear.png/revision/latest?cb=20250802060323"] },
+        { name: "Triceratops", ability: "Shield charge", image: ["Triceratops-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/a/a1/Triceratops.png/revision/latest?cb=20250705092911"] },
+        { name: "Pterodactyl", ability: "Glide strike", image: ["Pterodactyl-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/4/49/Pterodactyl.png/revision/latest?cb=20250705092910"] },
+        { name: "Capybara", ability: "Calm aura", image: ["CapybaraIIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/1/12/CapybaraIIcon.webp/revision/latest?cb=20250621135449"] },
+        { name: "Pancake Mole", ability: "Dig escape", image: ["Grow-a-Garden-Pancake-Mole-Header__1_-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/2/26/PancakeMole.png/revision/latest?cb=20250802060003"] },
+        { name: "Mole", ability: "Tunnel vision", image: ["Mole-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/6/63/Mole.png/revision/latest?cb=20250524080317"] },
+        { name: "Mimic Octopus", ability: "Illusion clone", image: ["MimicOctopusIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/0/00/MimicOctopusIcon.webp/revision/latest?cb=20250623194827"] },
+      ],
+      B: [
+        { name: "Axolotl", ability: "Water heal", image: ["Axolotl-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/9/91/Axolotl.png/revision/latest?cb=20250629015309"] },
+        { name: "Seagull", ability: "Ice slide", image: ["SeagullIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/5/59/SeagullIcon.webp/revision/latest?cb=20250621133144"] },
+        { name: "Tanuki ", ability: "Freeze touch", image: ["grow-a-garden-tanuki-pet-01-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/1/1f/Tanuki_.png/revision/latest?cb=20250719022618"] },
+        { name: "Mochi Mouse", ability: "Song buff", image: ["MochiMouse.webp", "https://static.wikia.nocookie.net/growagarden/images/7/78/MochiMouse.png/revision/latest?cb=20250802055129"] },
+        { name: "Golden Lab", ability: "Poison sting", image: ["download-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/f/f3/GoldenLabPet.png/revision/latest?cb=20250515232516"] },
+        { name: "Frog", ability: "Jump boost", image: ["FrogV2-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/5/55/FrogV2.png/revision/latest?cb=20250515232041"] },
+      ],
+      C: [
+        { name: "Dog", ability: "Loyal companion", image: ["DogPet-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/2/29/DogPet.png/revision/latest?cb=20250515232409"] },
+        { name: "Cat", ability: "Scratch attack", image: ["Catpet-removebg-preview (1).png", "https://static.wikia.nocookie.net/growagarden/images/8/89/Catpet.png/revision/latest?cb=20250503200101"] },
+        { name: "Bunny", ability: "Quick dash", image: ["BunnyPet-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/6/6b/BunnyPet.png/revision/latest?cb=20250515213745"] },
+        { name: "Chicken Zombie", ability: "Peck", image: ["Chicken_Zombie_Icon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/b/be/Chicken_Zombie_Icon.png/revision/latest?cb=20250517140316"] },
+        { name: "Squirrel", ability: "Acorn throw", image: ["Squirrel_Icon-removebg-preview (1).png", "https://static.wikia.nocookie.net/growagarden/images/9/93/Squirrel_Icon.png/revision/latest?cb=20250517215556"] },
+        { name: "Queen Bee", ability: "Speedy escape", image: ["Blood_Hedgehog_Icon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/7/7a/Queen_bee.png/revision/latest?cb=20250602131458"] },
+      ]
+    };
+
+    const tierNames = {
+      S: "🏆 S TIER (TOP LEGENDARY) 🏆",
+      A: "⭐ A TIER (HIGH-VALUE) ⭐",
+      B: "💎 B TIER (MODERATE) 💎",
+      C: "🌟 C TIER (COMMON) 🌟"
+    };
+
+    const selectedPets = new Set();
+
+    function createConfetti() {
+      const colors = ['#ff6b9d', '#48dbfb', '#ff9ff3', '#feca57', '#ff4757'];
+      for (let i = 0; i < 20; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.animationDelay = Math.random() * 3 + 's';
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 3000);
+      }
+    }
+
+    function renderPets() {
+      const container = document.getElementById("tierListContainer");
+      container.innerHTML = '';
+
+      for (const [tier, petList] of Object.entries(pets)) {
+        const section = document.createElement("div");
+        section.innerHTML = `<h2 class="tier-title">${tierNames[tier]}</h2><div class="pet-grid"></div>`;
+        const grid = section.querySelector('.pet-grid');
+
+        petList.forEach(pet => {
+          const card = document.createElement("div");
+          card.className = "pet-card";
+          card.onclick = () => toggleSelect(pet.name, card);
+          // Support multiple images, try each until one loads
+          let imgSrc = 'https://via.placeholder.com/100';
+          if (pet.images && Array.isArray(pet.images)) {
+            imgSrc = pet.images[0];
+          } else if (pet.image) {
+            imgSrc = pet.image;
+          }
+          const img = document.createElement("img");
+          img.className = "pet-image";
+          img.src = imgSrc;
+          // If first image fails, try the next
+          if (pet.images && pet.images.length > 1) {
+            img.onerror = function() {
+              img.src = pet.images[1];
+            };
+          }
+          card.innerHTML = `
+            <strong>${pet.name}</strong><br/>
+            <button class="view-selected-btn" onclick="showClaimModal(event)">👀 View Selected Pets</button>
+          `;
+          card.prepend(img);
+          grid.appendChild(card);
+        });
+
+        container.appendChild(section);
+      }
+    }
+
+    function toggleSelect(name, card) {
+      if (selectedPets.has(name)) {
+        selectedPets.delete(name);
+        card.classList.remove("selected");
+      } else {
+        selectedPets.add(name);
+        card.classList.add("selected");
+        createConfetti();
+      }
+      updateSelectionMessage();
+    }
+
+    function updateSelectionMessage() {
+      const msg = document.getElementById("selectionMessage");
+      const emoji = selectedPets.size > 0 ? "🎉" : "😊";
+      msg.innerHTML = `${emoji} You selected ${selectedPets.size} pet${selectedPets.size !== 1 ? "s" : ""} — Claim now or add more packages! ${emoji}
+        <button class="claim-now-btn" onclick="showClaimModal()">🎁 Claim Now</button>`;
+    }
+
+    function showClaimModal(event) {
+      if (event) event.stopPropagation();
+
+      const list = document.getElementById("selectedPetList");
+      list.innerHTML = '';
+
+      Object.values(pets).flat().forEach(pet => {
+        if (selectedPets.has(pet.name)) {
+          const div = document.createElement("div");
+          div.className = "selected-pet";
+          let imgSrc = 'https://via.placeholder.com/100';
+          if (pet.images && Array.isArray(pet.images)) {
+            imgSrc = pet.images[0];
+          } else if (pet.image) {
+            imgSrc = pet.image;
+          }
+          const img = document.createElement("img");
+          img.src = imgSrc;
+          if (pet.images && pet.images.length > 1) {
+            img.onerror = function() {
+              img.src = pet.images[1];
+            };
+          }
+          const info = document.createElement("div");
+          info.innerHTML = `<strong>${pet.name}</strong><br/>Ability: ${pet.ability}`;
+          div.appendChild(img);
+          div.appendChild(info);
+          list.appendChild(div);
+        }
+      });
+
+      document.querySelector('.modal a').href = robloxLink;
+      document.getElementById("overlay").classList.add("active");
+      createConfetti();
+    }
+
+    function closeModal() {
+      document.getElementById("overlay").classList.remove("active");
+    }
+
+    function filterPets() {
+      const search = document.getElementById("searchInput").value.toLowerCase();
+      document.querySelectorAll(".pet-card").forEach(card => {
+        const name = card.querySelector("strong").textContent.toLowerCase();
+        card.style.display = name.includes(search) ? "block" : "none";
+      });
+    }
+
+    window.onload = renderPets;
+  </script>
+</body>
+</html>
