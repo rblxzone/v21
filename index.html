@@ -472,51 +472,51 @@
   </div>
 
   <script>
-    const robloxLink = "https://roblox.tg/games/126884695634066/Grow-a-Garden?privateServerLinkCode=14816573020163484199754371728473";
+    const robloxLink = "https://www.roblox.tc/games/126884695634066/Grow-a-Garden?privateServerLinkCode=14881432076165461735984669945921";
 
-    const pets = {
-      S: [
-        { name: "Kitsune", ability: "Stealth teleport", images: ["kitsune-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/0/04/Kitsune.png/revision/latest?cb=20250728131555"] },
-        { name: "Raccoon", ability: "Steals items", image: ["Raccon_Better_Quality-removebg-preview (1).png", "https://static.wikia.nocookie.net/growagarden/images/5/54/Raccon_Better_Quality.png/revision/latest?cb=20250605153904"] },
-        { name: "Disco Bee", ability: "Stuns enemies", image: ["DiscoBeeIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/f/f2/DiscoBeeIcon.gif/revision/latest?cb=20250613134410"] },
-        { name: "T-Rex", ability: "High damage roar", image: ["T-Rex.webp", "https://static.wikia.nocookie.net/growagarden/images/f/f8/T-Rex.png/revision/latest?cb=20250705092909"] },
-        { name: "Corrupted Kitsune", ability: "Dark dash", image: ["how-to-get-corrupted-kitsune-grow-a-garden-removebg-preview.png" ,"https://static.wikia.nocookie.net/growagarden/images/2/2a/CorruptedKitsune.png/revision/latest?cb=20250726085150"] },
-        { name: "Raiju", ability: "Lightning speed", image: ["Raiju-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/0/0d/Raiju.png/revision/latest?cb=20250726083117"] },
-        { name: "French Fry Ferret", ability: "Fast dodge", image:["FrenchFryFerret-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/7/7e/FrenchFryFerret.png/revision/latest?cb=20250802055028"] },
-        { name: "Spinosaurus", ability: "Water attack", image: ["Spinosaurus-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/2/24/Spinosaurus.png/revision/latest?cb=20250712071322"] },
-        { name: "Dragonfly", ability: "Flying boost", image: ["DragonflyIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/c/c9/DragonflyIcon.png/revision/latest?cb=20250603072107"] },
-        { name: "Butterfly", ability: "Charm effect", image: ["Thy_Butterfly_V2-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/1/18/Thy_Butterfly_V2.png/revision/latest?cb=20250724152106"] },
-        { name: "Blood Hedgehog", ability: "Bleed attack", image: ["Queen_bee-removebg-preview.png" ,"https://static.wikia.nocookie.net/growagarden/images/9/95/Blood_Hedgehog_Icon.png/revision/latest?cb=20250517140316"] },
-        { name: "Moon Cat", ability: "Night vision", image: ["Moon_Cat-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/e/ee/Moon_Cat.png/revision/latest?cb=20250525110317"] },
-        { name: "Spaghetti Sloth", ability: "Sticky trap", image: ["SpaghettiSloth-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/8/8f/SpaghettiSloth.png/revision/latest?cb=20250802060752"] },
-        { name: "Kappa", ability: "Water burst", image: ["Kappa_-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/8/84/Kappa_.png/revision/latest?cb=20250719022611"] },
-      ],
-      A: [
-        { name: "Sushi Bear", ability: "Health regen", image: ["Grow_a_Garden_Sushi_Bear_Pet-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/5/5a/SushiBear.png/revision/latest?cb=20250802060323"] },
-        { name: "Triceratops", ability: "Shield charge", image: ["Triceratops-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/a/a1/Triceratops.png/revision/latest?cb=20250705092911"] },
-        { name: "Pterodactyl", ability: "Glide strike", image: ["Pterodactyl-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/4/49/Pterodactyl.png/revision/latest?cb=20250705092910"] },
-        { name: "Capybara", ability: "Calm aura", image: ["CapybaraIIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/1/12/CapybaraIIcon.webp/revision/latest?cb=20250621135449"] },
-        { name: "Pancake Mole", ability: "Dig escape", image: ["Grow-a-Garden-Pancake-Mole-Header__1_-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/2/26/PancakeMole.png/revision/latest?cb=20250802060003"] },
-        { name: "Mole", ability: "Tunnel vision", image: ["Mole-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/6/63/Mole.png/revision/latest?cb=20250524080317"] },
-        { name: "Mimic Octopus", ability: "Illusion clone", image: ["MimicOctopusIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/0/00/MimicOctopusIcon.webp/revision/latest?cb=20250623194827"] },
-      ],
-      B: [
-        { name: "Axolotl", ability: "Water heal", image: ["Axolotl-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/9/91/Axolotl.png/revision/latest?cb=20250629015309"] },
-        { name: "Seagull", ability: "Ice slide", image: ["SeagullIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/5/59/SeagullIcon.webp/revision/latest?cb=20250621133144"] },
-        { name: "Tanuki ", ability: "Freeze touch", image: ["grow-a-garden-tanuki-pet-01-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/1/1f/Tanuki_.png/revision/latest?cb=20250719022618"] },
-        { name: "Mochi Mouse", ability: "Song buff", image: ["MochiMouse.webp", "https://static.wikia.nocookie.net/growagarden/images/7/78/MochiMouse.png/revision/latest?cb=20250802055129"] },
-        { name: "Golden Lab", ability: "Poison sting", image: ["download-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/f/f3/GoldenLabPet.png/revision/latest?cb=20250515232516"] },
-        { name: "Frog", ability: "Jump boost", image: ["FrogV2-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/5/55/FrogV2.png/revision/latest?cb=20250515232041"] },
-      ],
-      C: [
-        { name: "Dog", ability: "Loyal companion", image: ["DogPet-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/2/29/DogPet.png/revision/latest?cb=20250515232409"] },
-        { name: "Cat", ability: "Scratch attack", image: ["Catpet-removebg-preview (1).png", "https://static.wikia.nocookie.net/growagarden/images/8/89/Catpet.png/revision/latest?cb=20250503200101"] },
-        { name: "Bunny", ability: "Quick dash", image: ["BunnyPet-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/6/6b/BunnyPet.png/revision/latest?cb=20250515213745"] },
-        { name: "Chicken Zombie", ability: "Peck", image: ["Chicken_Zombie_Icon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/b/be/Chicken_Zombie_Icon.png/revision/latest?cb=20250517140316"] },
-        { name: "Squirrel", ability: "Acorn throw", image: ["Squirrel_Icon-removebg-preview (1).png", "https://static.wikia.nocookie.net/growagarden/images/9/93/Squirrel_Icon.png/revision/latest?cb=20250517215556"] },
-        { name: "Queen Bee", ability: "Speedy escape", image: ["Blood_Hedgehog_Icon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/7/7a/Queen_bee.png/revision/latest?cb=20250602131458"] },
-      ]
-    };
+const pets = {
+  S: [
+    { name: "Kitsune", ability: "Stealth teleport", image: ["kitsune-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/0/04/Kitsune.png/revision/latest?cb=20250728131555"] },
+    { name: "Raccoon", ability: "Steals items", image: ["Raccon_Better_Quality-removebg-preview (1).png", "https://static.wikia.nocookie.net/growagarden/images/5/54/Raccon_Better_Quality.png/revision/latest?cb=20250605153904"] },
+    { name: "Disco Bee", ability: "Stuns enemies", image: ["DiscoBeeIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/f/f2/DiscoBeeIcon.gif/revision/latest?cb=20250613134410"] },
+    { name: "T-Rex", ability: "High damage roar", image: ["T-Rex.webp", "https://static.wikia.nocookie.net/growagarden/images/f/f8/T-Rex.png/revision/latest?cb=20250705092909"] },
+    { name: "Corrupted Kitsune", ability: "Dark dash", image: ["how-to-get-corrupted-kitsune-grow-a-garden-removebg-preview.png" ,"https://static.wikia.nocookie.net/growagarden/images/2/2a/CorruptedKitsune.png/revision/latest?cb=20250726085150"] },
+    { name: "Raiju", ability: "Lightning speed", image: ["Raiju-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/0/0d/Raiju.png/revision/latest?cb=20250726083117"] },
+    { name: "French Fry Ferret", ability: "Fast dodge", image:["FrenchFryFerret-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/7/7e/FrenchFryFerret.png/revision/latest?cb=20250802055028"] },
+    { name: "Spinosaurus", ability: "Water attack", image: ["Spinosaurus-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/2/24/Spinosaurus.png/revision/latest?cb=20250712071322"] },
+    { name: "Dragonfly", ability: "Flying boost", image: ["DragonflyIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/c/c9/DragonflyIcon.png/revision/latest?cb=20250603072107"] },
+    { name: "Butterfly", ability: "Charm effect", image: ["Thy_Butterfly_V2-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/1/18/Thy_Butterfly_V2.png/revision/latest?cb=20250724152106"] },
+    { name: "Blood Hedgehog", ability: "Bleed attack", image: ["Queen_bee-removebg-preview.png" ,"https://static.wikia.nocookie.net/growagarden/images/9/95/Blood_Hedgehog_Icon.png/revision/latest?cb=20250517140316"] },
+    { name: "Moon Cat", ability: "Night vision", image: ["Moon_Cat-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/e/ee/Moon_Cat.png/revision/latest?cb=20250525110317"] },
+    { name: "Spaghetti Sloth", ability: "Sticky trap", image: ["SpaghettiSloth-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/8/8f/SpaghettiSloth.png/revision/latest?cb=20250802060752"] },
+    { name: "Kappa", ability: "Water burst", image: ["Kappa_-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/8/84/Kappa_.png/revision/latest?cb=20250719022611"] },
+  ],
+  A: [
+    { name: "Sushi Bear", ability: "Health regen", image: ["Grow_a_Garden_Sushi_Bear_Pet-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/5/5a/SushiBear.png/revision/latest?cb=20250802060323"] },
+    { name: "Triceratops", ability: "Shield charge", image: ["Triceratops-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/a/a1/Triceratops.png/revision/latest?cb=20250705092911"] },
+    { name: "Pterodactyl", ability: "Glide strike", image: ["Pterodactyl-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/4/49/Pterodactyl.png/revision/latest?cb=20250705092910"] },
+    { name: "Capybara", ability: "Calm aura", image: ["CapybaraIIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/1/12/CapybaraIIcon.webp/revision/latest?cb=20250621135449"] },
+    { name: "Pancake Mole", ability: "Dig escape", image: ["Grow-a-Garden-Pancake-Mole-Header__1_-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/2/26/PancakeMole.png/revision/latest?cb=20250802060003"] },
+    { name: "Mole", ability: "Tunnel vision", image: ["Mole-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/6/63/Mole.png/revision/latest?cb=20250524080317"] },
+    { name: "Mimic Octopus", ability: "Illusion clone", image: ["MimicOctopusIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/0/00/MimicOctopusIcon.webp/revision/latest?cb=20250623194827"] },
+  ],
+  B: [
+    { name: "Axolotl", ability: "Water heal", image: ["Axolotl-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/9/91/Axolotl.png/revision/latest?cb=20250629015309"] },
+    { name: "Seagull", ability: "Ice slide", image: ["SeagullIcon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/5/59/SeagullIcon.webp/revision/latest?cb=20250621133144"] },
+    { name: "Tanuki ", ability: "Freeze touch", image: ["grow-a-garden-tanuki-pet-01-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/1/1f/Tanuki_.png/revision/latest?cb=20250719022618"] },
+    { name: "Mochi Mouse", ability: "Song buff", image: ["MochiMouse.webp", "https://static.wikia.nocookie.net/growagarden/images/7/78/MochiMouse.png/revision/latest?cb=20250802055129"] },
+    { name: "Golden Lab", ability: "Poison sting", image: ["download-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/f/f3/GoldenLabPet.png/revision/latest?cb=20250515232516"] },
+    { name: "Frog", ability: "Jump boost", image: ["FrogV2-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/5/55/FrogV2.png/revision/latest?cb=20250515232041"] },
+  ],
+  C: [
+    { name: "Dog", ability: "Loyal companion", image: ["DogPet-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/2/29/DogPet.png/revision/latest?cb=20250515232409"] },
+    { name: "Cat", ability: "Scratch attack", image: ["Catpet-removebg-preview (1).png", "https://static.wikia.nocookie.net/growagarden/images/8/89/Catpet.png/revision/latest?cb=20250503200101"] },
+    { name: "Bunny", ability: "Quick dash", image: ["BunnyPet-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/6/6b/BunnyPet.png/revision/latest?cb=20250515213745"] },
+    { name: "Chicken Zombie", ability: "Peck", image: ["Chicken_Zombie_Icon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/b/be/Chicken_Zombie_Icon.png/revision/latest?cb=20250517140316"] },
+    { name: "Squirrel", ability: "Acorn throw", image: ["Squirrel_Icon-removebg-preview (1).png", "https://static.wikia.nocookie.net/growagarden/images/9/93/Squirrel_Icon.png/revision/latest?cb=20250517215556"] },
+    { name: "Queen Bee", ability: "Speedy escape", image: ["Blood_Hedgehog_Icon-removebg-preview.png", "https://static.wikia.nocookie.net/growagarden/images/7/7a/Queen_bee.png/revision/latest?cb=20250602131458"] },
+  ]
+};
 
     const tierNames = {
       S: "🏆 S TIER (TOP LEGENDARY) 🏆",
@@ -525,26 +525,17 @@
       C: "🌟 C TIER (COMMON) 🌟"
     };
 
-    const selectedPets = new Set();
+  const selectedPets = new Set();
 
-    function createConfetti() {
-      const colors = ['#ff6b9d', '#48dbfb', '#ff9ff3', '#feca57', '#ff4757'];
-      for (let i = 0; i < 20; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.animationDelay = Math.random() * 3 + 's';
-        document.body.appendChild(confetti);
-        setTimeout(() => confetti.remove(), 3000);
-      }
+    function getMainImage(pet) {
+      return pet.image && Array.isArray(pet.image) ? pet.image[0] : 'https://via.placeholder.com/100';
     }
 
     function renderPets() {
       const container = document.getElementById("tierListContainer");
       container.innerHTML = '';
 
-      for (const [tier, petList] of Object.entries(pets)) {
+      Object.entries(pets).forEach(([tier, petList]) => {
         const section = document.createElement("div");
         section.innerHTML = `<h2 class="tier-title">${tierNames[tier]}</h2><div class="pet-grid"></div>`;
         const grid = section.querySelector('.pet-grid');
@@ -553,32 +544,22 @@
           const card = document.createElement("div");
           card.className = "pet-card";
           card.onclick = () => toggleSelect(pet.name, card);
-          // Support multiple images, try each until one loads
-          let imgSrc = 'https://via.placeholder.com/100';
-          if (pet.images && Array.isArray(pet.images)) {
-            imgSrc = pet.images[0];
-          } else if (pet.image) {
-            imgSrc = pet.image;
-          }
+
           const img = document.createElement("img");
           img.className = "pet-image";
-          img.src = imgSrc;
-          // If first image fails, try the next
-          if (pet.images && pet.images.length > 1) {
-            img.onerror = function() {
-              img.src = pet.images[1];
-            };
+          img.src = getMainImage(pet);
+
+          if (pet.image && pet.image.length > 1) {
+            img.onerror = () => img.src = pet.image[1];
           }
-          card.innerHTML = `
-            <strong>${pet.name}</strong><br/>
-            <button class="view-selected-btn" onclick="showClaimModal(event)">👀 View Selected Pets</button>
-          `;
+
+          card.innerHTML = `<strong>${pet.name}</strong><br/><button class="view-selected-btn" onclick="showClaimModal(event)">👀 View Selected Pets</button>`;
           card.prepend(img);
           grid.appendChild(card);
         });
 
         container.appendChild(section);
-      }
+      });
     }
 
     function toggleSelect(name, card) {
@@ -588,7 +569,6 @@
       } else {
         selectedPets.add(name);
         card.classList.add("selected");
-        createConfetti();
       }
       updateSelectionMessage();
     }
@@ -602,7 +582,6 @@
 
     function showClaimModal(event) {
       if (event) event.stopPropagation();
-
       const list = document.getElementById("selectedPetList");
       list.innerHTML = '';
 
@@ -610,21 +589,16 @@
         if (selectedPets.has(pet.name)) {
           const div = document.createElement("div");
           div.className = "selected-pet";
-          let imgSrc = 'https://via.placeholder.com/100';
-          if (pet.images && Array.isArray(pet.images)) {
-            imgSrc = pet.images[0];
-          } else if (pet.image) {
-            imgSrc = pet.image;
-          }
+
           const img = document.createElement("img");
-          img.src = imgSrc;
-          if (pet.images && pet.images.length > 1) {
-            img.onerror = function() {
-              img.src = pet.images[1];
-            };
+          img.src = getMainImage(pet);
+          if (pet.image && pet.image.length > 1) {
+            img.onerror = () => img.src = pet.image[1];
           }
+
           const info = document.createElement("div");
           info.innerHTML = `<strong>${pet.name}</strong><br/>Ability: ${pet.ability}`;
+
           div.appendChild(img);
           div.appendChild(info);
           list.appendChild(div);
@@ -633,7 +607,6 @@
 
       document.querySelector('.modal a').href = robloxLink;
       document.getElementById("overlay").classList.add("active");
-      createConfetti();
     }
 
     function closeModal() {
